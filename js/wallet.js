@@ -16,58 +16,46 @@
 
 
         const cost = await contract.methods.cost().call();
+        // cost gösterme
             document.querySelector('#cost').textContent = cost;
         const input = document.getElementById('sonuc').value;
         const newCost = document.getElementById('newCost');
-        var toplam = parseInt(cost) * parseInt(input) + 151195;
-        newCost.innerHTML = toplam;
+        var toplam = parseInt(cost) * parseInt(input);
+        document.querySelector('#newCost').textContent = toplam / 1000000000000000000;
+        mintpieces = parseInt(input);
 
+
+
+
+            
         
 
-        document.getElementById('+').addEventListener('click', function(){
-            var m = document.getElementById('sonuc').value;
-            toplam = parseInt(cost) * parseInt(m) + 151195;
-        
+        function guncelle(){
+            const input = document.getElementById('sonuc').value;
+            mintpieces = parseInt(input);
+            toplam = parseInt(cost) * parseInt(input);
+            document.querySelector('#newCost').textContent = toplam / 1000000000000000000;
 
+        }
 
-            newCost.innerHTML = toplam;
-        });
-        document.getElementById('-').addEventListener('click', function(){
-            var m = document.getElementById('sonuc').value;
-            toplam = parseInt(cost) * parseInt(m) + 151195;
-        
-
-
-            newCost.innerHTML = toplam;
-        });
-
-
-
-
-
-
-
-
-
-
+        document.querySelector('#arttir').addEventListener('click', guncelle);
+        document.querySelector('#azalt').addEventListener('click', guncelle);
 
 
 
 
         document.getElementById('mint').onclick = () => {
-            contract.methods.mint(account).send({from:account,value:toplam});
+            contract.methods.mint(mintpieces).send({from:account,value:toplam});
         }
 
         var totalsupply = await contract.methods.totalSupply().call();
-        document.getElementById('ttsupply').textContent = totalsupply;
+            document.getElementById('ttsupply').textContent = totalsupply;
 
         var maxsupply = await contract.methods.maxSupply().call();
-        document.getElementById('maxsupply').textContent = maxsupply;
-
-
+            document.getElementById('maxsupply').textContent = maxsupply;
 
         var name = await contract.methods.name().call();
-        document.getElementById('name').textContent = name;
+            document.getElementById('name').textContent = name;
 
         
 
