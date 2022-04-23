@@ -6,15 +6,17 @@
     <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
     </head>
         <body>
+            <button id="connect-wallet">Connect Wallet</button>
             <h1 class="total"><span id="ttsupply"></span>/<span id="maxsupply"></span></h1>
             <p>wallet address -<span id="wallet-address"></span></p>
             <p>Cost =<span id="cost"></span></p>
-            <p>Sonuç =<span id="newCost"></span></p>
+            <p>Sonuç =<span id="newCost"></span> ETH</p>
             <button id="mint">Mint</button>
+            
 
-            <input type=button id="+" onclick="arttir()" value="+">
+            <input type=button id="arttir" onclick="arttir()" value="+">
             <input type=button id="sonuc" value="1">
-            <input type=button id="-" onclick="azalt()" value="-">
+            <input type=button id="azalt" onclick="azalt()" value="-">
 
             
 <script src="js/sayac.js"></script>
